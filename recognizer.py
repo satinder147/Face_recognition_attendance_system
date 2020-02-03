@@ -19,21 +19,9 @@ print('attendance till now is ')
 
 model=load_model('face_reco2.MODEL')
 
-
-def test():
-    test_run=cv2.imread('1.jpg',1)
-    test_run=cv2.resize(test_run,(160,160))
-    #test_run=np.rollaxis(test_run,2,0)
-    test_run=test_run.astype('float')/255.0
-    test_run=np.expand_dims(test_run,axis=0)
-    test_run=e.calculate(test_run)
-    test_run=np.expand_dims(test_run,axis=0)
-    test_run=model.predict(test_run)[0]
-
-
 cap=cv2.VideoCapture(1)
 ret=True
-test()
+
 while ret:
     ret,frame=cap.read()
     frame=cv2.flip(frame,1)
